@@ -16,9 +16,7 @@ public class ProductRepository {
         int lenght = items.length + 1;
         Product[] tmp = new Product[lenght];
 
-        for (int i = 0; i < items.length; i++) {
-            tmp[i] = items[i];
-        }
+        System.arraycopy(items, 0, tmp, 0, items.length);
 
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;

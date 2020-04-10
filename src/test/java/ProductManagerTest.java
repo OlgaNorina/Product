@@ -1,12 +1,14 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class ProductManagerTest {
-    private ProductManager manager = new ProductManager(new ProductRepository());
+    private ProductRepository repository = new ProductRepository();
+    private ProductManager manager = new ProductManager(repository);
     private Product first = new Book(1, "Ромео и Джульетта", 250, "Шекспир");
     private Product second = new Smartphone(2, "Sumsung j3", 5600, "Sumsung");
     private Product third = new Book(3, "Алхимик", 200, "Пауло Коэльо");
@@ -22,10 +24,10 @@ class ProductManagerTest {
         manager.add(fifth);
     }
 
-    @Test
-    void shouldSearchByExist() {
-        assertArrayEquals(new Product[]{first}, manager.searchBy("Ромео и Джульетта"));
-        assertArrayEquals(new Product[]{fourth}, manager.searchBy("iPhone6"));
+    @ParameterizedTest
+    @CsvFileSource(resources = "/searchByExist.csv")
+    void shouldSearchByExist(int index, String text) {
+        assertEquals(repository.findAll()[index], manager.searchBy(text)[0]);
     }
 
     @Test

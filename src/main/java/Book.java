@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 public class Book extends Product {
     String author;
 
-
     public Book(int id, String nameProduct, int price, String author) {
         super(id, nameProduct, price);
         this.author = author;
