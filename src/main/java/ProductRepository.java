@@ -1,12 +1,14 @@
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.netology.manager.NotFoundException;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class ProductRepository {
     private Product[] items = new Product[0];
+    NotFoundException exception = new NotFoundException();
 
     public Product[] findAll() {
         return items;
@@ -25,7 +27,18 @@ public class ProductRepository {
         items = tmp;
     }
 
+    Product findById(int id) {
+        for (Product item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void removedById(int id) {
+        Product result = findById(id);
+        if(result == null ) throw new NotFoundException("Element with id: " + id + " not found");
         int lenght = items.length - 1;
         Product[] tmp = new Product[lenght];
         int index = 0;
