@@ -1,6 +1,5 @@
 import lombok.Data;
 
-
 @Data
 public class ProductManager {
     private ProductRepository repository;
