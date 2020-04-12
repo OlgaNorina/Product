@@ -1,5 +1,11 @@
+package ru.netology.manager;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ru.netology.repository.ProductRepository;
+import ru.netology.domain.Book;
+import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
 
 @AllArgsConstructor
 @Data
