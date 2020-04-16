@@ -12,4 +12,12 @@ public class Smartphone extends Product {
         super(id, nameProduct, coast);
         this.producerSmart = producerSmart;
     }
+
+    @Override
+    public boolean matches(String search) {
+        if (super.matches(search)){
+            return true;
+        }
+        return getProducerSmart().equalsIgnoreCase(search);
+    }
 }

@@ -9,4 +9,11 @@ public class Product {
     private int id;
     private String nameProduct;
     private int price;
+
+    public boolean matches(String search) {
+        if (getNameProduct().equalsIgnoreCase(search)) {
+            return true;
+        }
+        return false;
+    }
 }
