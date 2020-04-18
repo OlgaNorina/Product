@@ -1,10 +1,9 @@
+package ru.netology.domain;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import ru.netology.domain.Book;
-import ru.netology.domain.Product;
-import ru.netology.domain.Smartphone;
 import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 
